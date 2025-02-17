@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href= "/admin_dashboard">Info</a>
+                </li>
+                    <a class="nav-link" href="/flagged_entities">Flagged Entety</a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/find_admin">Find</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/admin_stats'>Stats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>Admin Dashboard</h2>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h3>Campaign Status</h3>
+                <img src="/static/campaign_status.png" alt="Campaign Status">
+            </div>
+            <div class="col-md-6">
+                <h3>Flagged Users</h3>
+                <img src="/static/flagged_users.png" alt="Flagged Users">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

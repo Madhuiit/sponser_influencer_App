@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Sponsor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Edit Sponsor</h2>
+        <form method="post">
+            <div class="form-group">
+                <label for="company_name">Company Name</label>
+                <input type="text" id="company_name" name="company_name" class="form-control" value="{{ sponsor.company_name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="form-control" value="{{ sponsor.username }}" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" value="{{ sponsor.password }}" required>
+            </div>
+            <div class="form-group">
+                <label for="Industry">Industry</label>
+                <input type="text" id="Industry" name="Industry" class="form-control" value="{{ sponsor.Industry }}" required>
+            </div>
+            <div class="form-group">
+                <label for="budget">Budget</label>
+                <input type="number" id="budget" name="budget" class="form-control" value="{{ sponsor.budget }}" step="0.01" required>
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Update Sponsor</button>
+        </form>
+    </div>
+</body>
+</html>

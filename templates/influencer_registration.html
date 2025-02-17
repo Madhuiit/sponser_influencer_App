@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influence Registration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color:  #b2b3b2;
+        }
+        .register-form {
+            background:  #dde7a3;
+            width: 25%;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+            position: relative;
+        }
+        .register-form h2 {
+            margin-bottom: 20px;
+        }
+        .register-form input[type="text"], .register-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .register-form input[type="number"]{
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+
+        }
+
+        .register-form input[type="submit"] {
+            width: 100%;
+            margin: 2px;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .register-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        a{
+            margin: 20px;
+        }
+        
+
+
+
+    </style> 
+</head>
+<body>
+    <div class="register-form">
+        <h2>Influencer Registration</h2>
+        <form action="/register_influecer" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for ="follower">Followers</label>
+            <input type="number" id="follower" name ="followers" required>
+
+            <label for="category">Category</label>
+            <input type="text" id="category" name="category" required>
+
+            <label for="nich">Nich</label>
+            <input type="text" id="nich" name="nich" required>
+
+
+            <!-- <h2>Plateform Pregence</h2>
+            <a href="#" class="btn btn-danger">Youtube</a>
+            <a href="#" class="btn btn-primary">twitter</a>
+            <a href="#" class="btn btn-secondary">Instagram</a>
+             -->
+            <input type="submit" value="register">
+        </form>
+        
+    </div>
+</body>
+</html>

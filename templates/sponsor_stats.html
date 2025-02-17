@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Stats</title>
+    <link rel="stylesheet" href="/path/to/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <a class="navbar-brand" href="#">Sponser Dashboard</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href= '/sponsor_profile' >Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href= '/sponsor_dashboard' >Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/go_to_campaign'>Campaign</a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/find_sponsor">Find</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/go_to_request">Ad Request</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/sponsor_stats">Stats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Sponsor Dashboard</h2>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h3>Campaign Status</h3>
+                <img src="/static/campaign_status.png" alt="Campaign Status">
+            </div>
+            <div class="col-md-6">
+                <h3>Request Type Distribution</h3>
+                <img src="/static/flagged_users.png" alt="Request Type Distribution">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

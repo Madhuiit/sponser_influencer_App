@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Request</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            background-color: #f6f6f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 100%;
+            height: 50px;
+            background-color: #dde7a3;
+            border-color: #121e13;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            padding-left: 20px;
+        }
+
+        .nav-txt {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 24px;
+            padding-right: 900px;
+        }
+
+        .navbar-nav {
+            font-size: 20px;
+            margin-left: auto;
+        }
+
+        .nav-item {
+            padding-left: 60px;
+        }
+
+        .login-form {
+            background:  #dde7a3;
+            padding: 50px;
+            height: 100%;
+            width: 45%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+        }
+        .login-form input[type="submit"] {
+            margin-top: 5px;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <a class="navbar-brand" href="#">Sponser Dashboard</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Find</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Campaign</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Stats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" style="margin-top: 90px; margin-left: 40%; height: 58%; gap: 2px;">
+        <div class="login-form" style="font-size: 30px;">
+            <form action="/create_req/{{campaign_id}}/{{influencer_id}}" method="post">
+                <label for="message">Message</label>
+                <input type="text" id="message" name="message" required>
+
+                <label for="requirment">Requirement</label>
+                <input type="text" id="requirment" name="requirment" required>
+
+                <label for="payment">Payment</label>
+                <input type="text" id="payment" name="payment" placeholder="$$" required>
+
+                <label for="request_type">Request Type:</label>
+                <select name="request_type" id="request_type">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
+
+
+                <input type="submit" value="Add Request" style="background-color: rgb(137, 237, 137); border-radius: 5px;">
+
+                <!-- Replace with a link or button that doesn't submit the form -->
+                <a href="/some_cancel_page" class="btn btn-secondary" role="button">Cancel</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

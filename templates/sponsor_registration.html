@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Sponser Registration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color:  #d1e7b0;
+        }
+        .register-form {
+            background:  #dde7a3;
+            padding: 40px;
+            height: 70vh;
+            width: 25%;
+            box-shadow: 0 0 10px rgba(1, 0, 0, 0.1);
+            border-radius: 50px;
+            position: relative;
+        }
+        .register-form h2 {
+            margin-bottom: 20px;
+        }
+        .register-form input[type="text"], .register-form input[type="password"] ,.register-form input[type="number"]{
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .register-form input[type="submit"]  {
+            width: 100%;
+            margin: 2px;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .register-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        a{
+            margin: 20px;
+        }
+        
+
+
+
+    </style> 
+</head>
+<body>
+    <div class="register-form">
+        <h2>Sponsor Registration</h2>
+        <form action="/register_sponser" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="company_name"> company_name</label>
+            <input type="text" id="company_name" name="company_name" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="industry">Industry:</label>
+            <input type="text" id="industry" name="industry" required>
+
+            <label for="budget">budget</label>
+            <input type="number" id="budget" name="budget" required>
+            
+            
+            <input type="submit" value="register">
+        </form>
+        
+    </div>
+</body>
+</html>

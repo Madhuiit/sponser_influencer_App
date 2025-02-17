@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            background-color: #f6f6f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #dde7a3;
+            border-color: #121e13;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            padding-left: 20px;
+        }
+
+        .nav-txt {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 24px;
+            padding-right: 900px;
+        }
+
+        .navbar-nav {
+            font-size: 20px;
+            margin-left: auto;
+        }
+
+        .nav-item {
+            padding-left: 60px;
+        }
+
+        h1 {
+            font-size: 60px;
+            padding-top: 2%;
+        }
+
+        .content {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .campaigns-table {
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .campaigns-table th, .campaigns-table td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .btn-flagged {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        .btn-unflagged {
+            background-color: #4CAF50;
+            color: #ffffff;
+        }
+
+        .btn-remove {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .progress-bar-container {
+            display: flex;
+            align-items: center;
+            width: 40%;
+            margin: 20px auto;
+        }
+
+        .progress-bar {
+            position: relative;
+            height: 50px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .progress-bar-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+            color: #181616;
+            font-weight: bold;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+        }
+
+        .button {
+            padding: 14px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button.view {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <a class="navbar-brand" href="#">Influencer Profile</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href= '/influencer_profile' >Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href= '/influencer_dashboard' >Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/go_to_campaign'>Campaign</a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/find_campaign">Find</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/influencer_stats">Stats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="profile-item" style="display: flex; margin-right: 70%; width: 100%;">
+    <div class="profile-pc" style="margin-top: 5%; margin-left: 40%;">
+        <div class="img-box" style="height: 200px; width: 200px ; margin: 10px; background-color: #e3e8e3; border-radius: 100%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <img src="#" alt="user 01 Image" style="margin-top: 80px;margin-left: 30px;">
+        </div>
+        <label for="follower">Reach</label>
+        <div class="reach-box" style="background-color: #FFC107 ;">
+            <div class="reach-bar">
+                <div class="Reach-bar-fill"></div>
+                <div class="reach-bar-text" style="padding-left:10px">5M Follower</div>
+            </div>
+        </div>
+      </div>
+      <h1 style="margin-top: 10%; margin-left: 20%;">Welcom {{username}}</h1>
+    </div>
+        <div class="content">
+        <h2>Active Campaign</h2>
+        {% for cp in campaign_progress %}
+        <h4 style="background-color: #b2ebb4;">The Sponsor has accepted your Request please complete it  befor deadline</h4>
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-bar-fill" style="width: {{cp.progress}}%; background-color: #FFC107;"></div>
+                <div class="progress-bar-text">Campaign {{ cp.campaign.id }} is {{ cp.progress|round }}% completed.</div>
+            </div>
+            <button class="button view">View</button>
+        </div>
+        {% endfor %}
+        
+        <h2>Manage Request</h2>
+        <table class="table table-bordered campaigns-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Campaign Id</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in sponsor_requests %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ request.campaign_id }}</td>
+                    <td>{{ request.message }}</td>
+                    <td>{{ request.status }}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <form method="post" action="/view" class="form-inline">
+                                    <input type="hidden" name="campaign_id" value="{{ request.campaign_id }}">
+                                    <button type="submit" class="btn btn-secondary">View</button>
+                                </form>
+                                <form method="post" action="/update_request_status_influencer/{{ request.campaign_id }}/{{request.influencer_id }}/accept" class="form-inline">
+                                    <!-- update_request_status_influencer/1/None/accept -->
+                                    <button type="submit" class="btn btn-unflagged">Accept</button>
+                                </form>
+                                <form method="post" action="/update_request_status_influencer/{{ request.campaign_id }}/{{ request.influencer_id }}/reject" class="form-inline">
+                                    <button type="submit" class="btn btn-remove">Reject</button>
+                                </form>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

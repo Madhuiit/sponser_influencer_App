@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Search</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            background-color: #f6f6f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #dde7a3;
+            border-color: #121e13;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            padding-left: 20px;
+        }
+
+        .nav-txt {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 24px;
+            padding-right: 900px;
+        }
+
+        .navbar-nav {
+            font-size: 20px;
+            margin-left: auto;
+        }
+
+        .nav-item {
+            padding-left: 60px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            padding-top: 2%;
+        }
+
+        .content {
+            margin-top: 100px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .campaigns-table {
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .campaigns-table th, .campaigns-table td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .btn-flagged {
+            background-color: #ff0000;
+            color: #ffffff;
+        }
+
+        .btn-unflagged {
+            background-color: #4CAF50;
+            color: #ffffff;
+        }
+
+        .btn-remove {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .progress-bar-container {
+            display: flex;
+            align-items: center;
+            width: 40%;
+            margin: 20px auto;
+        }
+
+        .progress-bar {
+            position: relative;
+            height: 50px;
+            background-color: #dde7a3;
+            border-radius: 5px;
+            overflow: hidden;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .progress-bar-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+            color: #181616;
+            font-weight: bold;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+        }
+
+        .button {
+            padding: 14px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button.view {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            flex-direction: row;
+            margin-right: 29%;
+            width: 80%;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: row;
+        }
+        .form-group {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <a class="navbar-brand" href="#">Influencer Profile</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href= '/influencer_profile' >Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href= '/influencer_dashboard' >Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/find_campaign">Find</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/influencer_stats">Stats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="container mt-5" >
+            <form action= '/find_campaign' method="POST" class="form-container mt-4" >
+                <div class="form-group">
+                    <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search">
+                </div>
+                <div class="form-group" >
+                    <button class="form-control" style="background-color: #dde7a3;" >Search</button>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" id="niche" name="niche" placeholder="Fillter" style="background-color: #dde7a3;">
+                        <option value="fashion">fashion</option>
+                        <option value="tech">tech</option>
+                        <option value="food">food</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+            </form>
+            <!-- Results will be displayed here after form submission -->
+            <div id="results" class="mt-4"></div>
+        </div>
+        {% for camp in campaigns %}
+
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-bar-text">Campaign {{camp.id}}|{{camp.name}}</div>
+            </div>
+            <button class="button view">View</button>
+            <button class="button flag" style="background-color: #6ce6cd; margin:4px"><a href='/create_request/{{camp.id}}'>Request</a></button>
+
+
+        </div>
+        {% endfor %}
+        
+</body>
+</html>
